@@ -91,6 +91,27 @@
         </div>
     </div>
 </div>
+        <!-- 게시물 업로드 부분 -->
+        {% for content in contents %}
+
+
+        <!-- 사진업로드 -->
+        <div class="profile">
+            <a class="profile_id" id="user_id{{content.post_id}}" href="{{url_for('profile_page', user_id=content.user_id)}}">{{content.user_id}}</a>
+        </div>
+
+        <!-- 게시물 사진 -->
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="/static/img/post_contents/{{content.f_name}}"
+                alt="First slide">
+        </div>
+
+        <!-- 게시물 글 -->
+        <span id="hidden_desc{{content.post_id}}" class="card_comment">{{content.desc}}</span>
+
+        {% endfor %}
+
+
 <script>
     let files;
 
