@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 from pymongo import MongoClient
 from datetime import datetime
 import json
@@ -13,7 +13,10 @@ db = client
 # 메인 페이지
 @app.route('/')
 def home():
-    return jsonify({'message': 'success'})
+    contents = db.local.data.find() # 전체 컨텐츠 데이터
+    
+    return render_template('index.html', contents=contents)
+    # return jsonify({'message': 'success'})
  
  
 
