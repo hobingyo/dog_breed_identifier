@@ -17,6 +17,8 @@ button {
 
 /*=================== navbar ====================*/
 
+
+
 .header {
     background-color: #c7b0ff;
     background-image: -webkit-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
@@ -25,6 +27,19 @@ button {
     top: 0;
     left: 0;
     right: 0;
+}
+
+.box {
+    width:700px;
+    height:200px;
+    font-size:30px;
+    margin:auto;
+    text-align:center;
+    border-radius: 2%;
+    border: 1px dashed #88f3ff;
+    align-items: center;
+    justify-content: center;
+    padding-top:50px
 }
 
 .navbar {
