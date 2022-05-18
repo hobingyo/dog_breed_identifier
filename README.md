@@ -13,8 +13,8 @@
 -   05.18.22 ~ 05.24.22
 
 ### 멤버구성 & 파트분배
--   AI 담당자 ->
--   Front-End -> 
+-   AI 담당자 -> 이호빈, 백우진, 문명주, 최준헌
+-   Front-End -> 이호빈, 백우진, 문명주, 최준헌
 -   Back-End -> 이호빈, 백우진, 문명주, 최준헌
 
 -   이호빈 <a href="https://github.com/DingoFreestyle"><img 
