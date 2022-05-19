@@ -71,13 +71,12 @@
                 <button style="width: 200px; height: 35px; border-radius: 10px " onclick="uploading_files()"> 너의 종은 무엇이냐
                     🐶
                 </button>
+                <input type="text" id="input-username" placeholder="너의 이름은..?">
             </p>
             <button id="modal_x_box" class="modal_x_box"><i class="fa fa-x"></i></button>
         </div>
         <div id="image_upload" class="addition_modal_body">
             <a id="text">사진을 여기에 끌어다 놓으세요</a>
-
-
         </div>
     </div>
 </div>
@@ -152,10 +151,13 @@
     function uploading_files() {
         let file = files[0]; //실제 파일
         let image = files[0].name; //파일명
+        let username = $("#input-username").val()
+        console.log(username)
 
         let formData = new FormData();
         formData.append('file_give', file)
         formData.append('image_give', image)
+        formData.append('username_give', username)
         console.log(formData)
 
         $.ajax({
@@ -192,11 +194,12 @@
                 let contents = response['photos']
                 for (let i = 0; i < contents.length; i++) {
                     let file = contents[i]['f_name']
+                    let username = contents[i]['username']
 
                     let temp_html = `<div id="card_box" class="card_box">
                 <div class="card_body">
                     <div class="card-text">
-                        <span id="shown_desc" style="text-align: center" class="card_comment">고양이뱀</span>
+                        <span id="shown_desc" style="text-align: center" class="card_comment">${username}</span>
                     </div>
                 </div>
                 <img class="d-block w-100" src="../static/img/post_contents/${file}">

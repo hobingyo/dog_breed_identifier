@@ -32,6 +32,7 @@ def get_contents():
 def content_post():
     file = request.files['file_give']  # 업로드한 이미지 파일
     image_receive = request.form['image_give']  # 업로드한 이미지명
+    username_receive = request.form['username_give']
     print(image_receive)
     ext = image_receive.split('.')[-1]  # 확장자 추출
 
@@ -44,6 +45,7 @@ def content_post():
 
     doc = {
         'post_id': content_count + 1,
+        'username': username_receive,
         'img': image_receive,
         'f_name': filename,
     }
