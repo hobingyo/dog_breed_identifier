@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from datetime import datetime
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from werkzeug.utils import secure_filename
-import json
+
 
 app = Flask(__name__)
 
