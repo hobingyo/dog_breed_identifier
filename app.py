@@ -1,19 +1,20 @@
-from flask import Flask, jsonify, render_template, request
 from pymongo import MongoClient
 from datetime import datetime
+from flask import Flask, render_template, jsonify, request, redirect, url_for
+from werkzeug.utils import secure_filename
 import json
 
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
-db = client
+db = client.classification
 
 
 
 # 메인 페이지
 @app.route('/')
 def home():
-    contents = db.local.data.find() # 전체 컨텐츠 데이터
+    contents = db.contents.find() # 전체 컨텐츠 데이터
     
     return render_template('index.html', contents=contents)
     # return jsonify({'message': 'success'})
@@ -22,44 +23,45 @@ def home():
 
 # DB 자료 응답 (화면 구현용)
 @app.route("/get_data", methods=["GET"])
-def get_data():  
-    contents = list(db.local.data.find({}, {'_id': False}))
+def get_contents():  
+    contents = list(db.contents.find({}, {'_id': False}))
     
     return jsonify({'message': contents})    
-    
     
     
 # 게시물 생성
 @app.route("/content", methods=["POST"])
 def content_post():
     
+    
     file = request.files['file_give']   # 업로드한 이미지 파일
-    image_receive = request.form['photo_give']  # 업로드한 이미지명
+    image_receive = request.form['image_give']  # 업로드한 이미지명
+    print(image_receive)
     ext = image_receive.split('.')[-1]  # 확장자 추출
 
     current_time = datetime.now()
     filename = f"{current_time.strftime('%Y%m%d%H%M%S')}.{ext}"
     save_to = f'static/img/post_contents/{filename}'  # 경로지정
     file.save(save_to)  # 이미지 파일 저장
-    
-    content_count = db.local.data.find({}, {'_id': False}).collection.estimated_document_count()    # 전체 게시물 개수
-    
+
+
+    content_count = db.contents.find({}, {'_id': False}).collection.estimated_document_count()    # 전체 게시물 개수
+
     doc= {
         'post_id': content_count + 1,
         'img': image_receive,
-        'f_name': filename,
-        'timestamp': current_time,
+        'f_name': filename,   
     }
-    db.local.data.insert_one(doc)
+    db.contents.insert_one(doc)
 
-    return jsonify({'result': 'success', 'msg':'게시물 등록 완료!'})
+    return jsonify({'msg':'게시물 생성 완료'})
 
 
 
 # 게시물 타임스탬프
 @app.route("/timestamp", methods=["GET"])
 def timestamp_get():
-    contents = list(db.local.data.find({}, {'_id': False}))
+    contents = list(db.data.find({}, {'_id': False}))
 
     timestamps=[]
     for i in range(len(contents)):
