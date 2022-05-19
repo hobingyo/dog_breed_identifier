@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
-db = client
+db = client.dogs
 
 
 
@@ -22,38 +22,10 @@ def home():
 
 # DB 자료 응답 (화면 구현용)
 @app.route("/get_data", methods=["GET"])
-def get_data():  
+def get_data():
     contents = list(db.local.data.find({}, {'_id': False}))
-    
-    return jsonify({'message': contents})    
-    
-    
-    
-# 게시물 생성
-@app.route("/content", methods=["POST"])
-def content_post():
-    
-    file = request.files['file_give']   # 업로드한 이미지 파일
-    image_receive = request.form['photo_give']  # 업로드한 이미지명
-    ext = image_receive.split('.')[-1]  # 확장자 추출
 
-    current_time = datetime.now()
-    filename = f"{current_time.strftime('%Y%m%d%H%M%S')}.{ext}"
-    save_to = f'static/img/post_contents/{filename}'  # 경로지정
-    file.save(save_to)  # 이미지 파일 저장
-    
-    content_count = db.local.data.find({}, {'_id': False}).collection.estimated_document_count()    # 전체 게시물 개수
-    
-    doc= {
-        'post_id': content_count + 1,
-        'img': image_receive,
-        'f_name': filename,
-        'timestamp': current_time,
-    }
-    db.local.data.insert_one(doc)
-
-    return jsonify({'result': 'success', 'msg':'게시물 등록 완료!'})
-
+    return jsonify({'message': contents})
 
 
 # 게시물 타임스탬프
