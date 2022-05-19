@@ -52,14 +52,7 @@
     </div>
     <div class="main_page_all" style="margin-top:50px">
         <div id="photos" class="main_column">
-            <div id="card_box" class="card_box">
-                <div class="card_body">
-                    <div class="card-text">
-                        <span id="shown_desc" style="text-align: center" class="card_comment">고양이뱀</span>
-                    </div>
-                </div>
-                <img class="d-block w-100" src="../static/img/cat.jpg">
-            </div>
+
         </div>
     </div>
 </main>
@@ -195,11 +188,13 @@
                 for (let i = 0; i < contents.length; i++) {
                     let file = contents[i]['f_name']
                     let username = contents[i]['username']
+                    let dog_name = contents[i]['dog_name']
 
                     let temp_html = `<div id="card_box" class="card_box">
                 <div class="card_body">
                     <div class="card-text">
-                        <span id="shown_desc" style="text-align: center" class="card_comment">${username}</span>
+                        <span id="shown_desc" style="text-align: center" class="card_comment">${username}</span><br>
+                        <span id="shown_desc" style="text-align: center" class="card_comment">${dog_name}</span>
                     </div>
                 </div>
                 <img class="d-block w-100" src="../static/img/post_contents/${file}">
