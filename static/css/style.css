@@ -988,7 +988,7 @@ button {
 }
 
 .addition_modal_body2 {
-    display: flex;
+    text-align: center;
     flex-direction: row;
     justify-content: space-between;
 }
