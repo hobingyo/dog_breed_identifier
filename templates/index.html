@@ -5,7 +5,7 @@
     <title>호빈교</title>
     <link rel="icon" href="../static/img/symbol.png" type="image/ico">
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/img/favicon.png"/>
+    <link rel="shortcut icon" href="../static/img/snake.png"/>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
@@ -19,44 +19,39 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
             integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
 
     <!-- main css -->
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/responsive.css">
-
+    <script src="../static/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
 <main class="">
     <div style="width: 100%; text-align: center; margin-top: 50px">
-        <div><img style="width: 1000px" src="../static/img/maindog.png"></div>
+        <div><img style="width: 1000px" src="../static/img/main.png"></div>
         <div style="margin-top:70px" class="box">
-            <span> 당신의 강아지는 무슨종일까요 ?<br>'강아지 종 판독기'에서 구분해드리겠습니다!</span>
+            <span> 당신은 뱀과 독사의 차이를 아시나요 ?<br>'What Is Your Snake?'에서 구분해드리겠습니다!</span>
         </div>
         <div style="margin-top:50px;">
-            <button type="button" class="btn btn-primary btn-lg" id="add_box" style="width: 100px; height: 50px;">업로드 🐶
+            <button type="button" class="btn btn-primary btn-lg" id="add_box" style="width: 100px; height: 50px;">업로드 🐍
             </button>
         </div>
     </div>
-    <div id="photos" class="main_page_all" style="margin-top:50px">
-        <div class="main_column">
+    <div class="main_page_all" style="margin-top:50px">
+        <div id="photos" class="main_column">
             <div id="card_box" class="card_box">
                 <div class="card_body">
                     <div class="card-text">
@@ -73,7 +68,8 @@
         <div class="addition_modal_head">
             <div style="width:40px"></div>
             <p class="modal-title">
-                <button style="width: 200px; height: 35px; border-radius: 10px "> 너의 종은 무엇이냐 🐶
+                <button style="width: 200px; height: 35px; border-radius: 10px " onclick="uploading_files()"> 너의 종은 무엇이냐
+                    🐶
                 </button>
             </p>
             <button id="modal_x_box" class="modal_x_box"><i class="fa fa-x"></i></button>
@@ -81,10 +77,13 @@
         <div id="image_upload" class="addition_modal_body">
             <a id="text">사진을 여기에 끌어다 놓으세요</a>
 
+
         </div>
     </div>
 </div>
 <script>
+    let files;
+
     $('#add_box').click(function () { //+버튼 클릭시 1번모달창 나타나기
         $('#first_modal').css({
             display: 'flex'
@@ -130,7 +129,8 @@
         dragOver(e);
 
         e.dataTransfer = e.originalEvent.dataTransfer;
-        var files = e.target.files || e.dataTransfer.files;
+        files = e.dataTransfer.files;
+
         if (files.length > 1) {
             alert('하나만 올려라.');
             return;
@@ -148,7 +148,67 @@
         }
     }
 
+    //파일 업로드 여기서부터 시작
+    function uploading_files() {
+        let file = files[0]; //실제 파일
+        let image = files[0].name; //파일명
+
+        let formData = new FormData();
+        formData.append('file_give', file)
+        formData.append('image_give', image)
+        console.log(formData)
+
+        $.ajax({
+            type: 'POST',
+            url: '/content',
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (response) {
+                if (response['result'] == 'success') {
+                    alert(response['msg'])
+                    window.location.href = '/'
+                } else {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            },
+            error: function (err) {
+                console.log('error:' + err)
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        listing()
+    })
+
+    function listing() {
+        $.ajax({
+            type: "GET",
+            url: "/content",
+            data: {},
+            success: function (response) {
+                let contents = response['photos']
+                for (let i = 0; i < contents.length; i++) {
+                    let file = contents[i]['f_name']
+
+                    let temp_html = `<div id="card_box" class="card_box">
+                <div class="card_body">
+                    <div class="card-text">
+                        <span id="shown_desc" style="text-align: center" class="card_comment">고양이뱀</span>
+                    </div>
+                </div>
+                <img class="d-block w-100" src="../static/img/post_contents/${file}">
+            </div>`
+                    $('#photos').append(temp_html)
+                }
+            }
+        })
+    }
 
 </script>
+
+
 </body>
 </html>
