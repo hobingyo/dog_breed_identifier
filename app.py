@@ -1,15 +1,15 @@
 from pymongo import MongoClient
 from datetime import datetime
 from flask import Flask, render_template, jsonify, request, redirect, url_for
-from werkzeug.utils import secure_filename
 import tensorflow as tf
 import numpy as np
 
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.kqpab.mongodb.net/cluster0?retryWrites=true&w=majority')
-db = client.mungmung2
+client = MongoClient(
+    'mongodb+srv://*******@cluster0.*****.mongodb.net/cluster0?retryWrites=true&w=majority')
+db = client.---
 
 
 # 메인 페이지
@@ -43,7 +43,8 @@ def content_post():
     save_to = f'static/img/post_contents/{filename}'  # 경로지정
     file.save(save_to)  # 이미지 파일 저장
 
-    content_count = db.contents.find({}, {'_id': False}).collection.estimated_document_count()  # 전체 게시물 개수
+    content_count = db.contents.find(
+        {}, {'_id': False}).collection.estimated_document_count()  # 전체 게시물 개수
 
     model = tf.keras.models.load_model('static/model/model.h5')
     test_url = f'static/img/post_contents/{filename}'
@@ -81,7 +82,7 @@ def content_post():
         'username': username_receive,
         'img': image_receive,
         'f_name': filename,
-        'dog_name' : dog_name
+        'dog_name': dog_name
     }
     print(doc)
     db.contents.insert_one(doc)
@@ -113,6 +114,11 @@ def timestamp_get():
 
     return jsonify({'timestamps': timestamps})
 
+# # 게시물 삭제
+# @app.route("/content", methods=["POST"])
+# def content_delete():
+#     db.contents.remove({_id,})
+
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
