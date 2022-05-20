@@ -1,6 +1,6 @@
 /*=================== fonts ====================*/
 * {
-    font-family: 'Gugi', cursive;
+    font-family: 'Gugi';
     color: #b4ab9f;
 }
 
@@ -9,37 +9,39 @@ a {
 }
 
 body {
-    background-color: #080615;
+    background-color: #000000;
 }
+
 button {
     cursor: pointer;
 }
 
 /*=================== navbar ====================*/
-.addition_modal_body img, .addition_modal_body video{
-    width:100%;
-    height:100%;
-    display:none;
+.addition_modal_body img,
+.addition_modal_body video {
+    width: 100%;
+    height: 100%;
+    display: none;
 }
 
 
 
 .box {
-    width:700px;
-    height:200px;
-    font-size:30px;
-    margin:auto;
-    text-align:center;
+    width: 700px;
+    height: 200px;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
     border-radius: 2%;
-    border: 1px dashed #88f3ff;
+    border: 1px dashed #5900ff;
     align-items: center;
     justify-content: center;
-    padding-top:50px
+    padding-top: 50px
 }
 
 /*=================== main page ====================*/
 .main_page_all {
-    background-color: #080615;
+    background-color: #2200ff;
     /* width: 100vw;
     height: 100vh; */
     margin: auto;
@@ -50,6 +52,7 @@ button {
     flex-direction: row;
 
 }
+
 /*===================modal====================*/
 
 
@@ -63,7 +66,7 @@ button {
 
 .card_box {
     margin-bottom: 70px;
-    border: 1px solid rgb(16, 15, 36);
+    border: 1px solid rgb(13, 0, 255);
     background-color: #0a071a;
 }
 
@@ -92,6 +95,7 @@ button {
     font-size: 12px;
     width: 90%;
 }
+
 /*==================게시글 모달 관련 CSS 시작====================*/
 .modal_overlay {
     width: 100%;
@@ -139,7 +143,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #C7B0FFFF;
+    color: rgb(72, 0, 255);
     opacity: 0.8;
     font-size: 1em;
 }
@@ -150,14 +154,13 @@ button {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    outline: 2px dashed #88F3FFFF;
+    outline: 2px dashed rgb(162, 0, 255);
     outline-offset: -10px;
     margin-top: 10px
 }
 
 .addition_modal_body p {
-    color: #88F3FFFF;
+    color: rgb(140, 0, 255);
 }
 
 /*==================게시글 모달 관련 CSS 끝====================*/
-

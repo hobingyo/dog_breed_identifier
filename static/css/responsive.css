@@ -1,28 +1,33 @@
-@media screen and (min-width:600px){
-    .main_column{
-        width:580px;
+@media screen and (min-width:600px) {
+    .main_column {
+        width: 580px;
     }
-    .card{
-        width:580px;
+
+    .card {
+        width: 580px;
     }
 }
+
 /*-------    여기 까지 min-width  -------*/
 
-@media screen and (max-width:1230px){
-    .description{
-        width:130px;
+@media screen and (max-width:1230px) {
+    .description {
+        width: 130px;
     }
-    .main_column{
-        margin-right:200px;
+
+    .main_column {
+        margin-right: 200px;
     }
 
 }
-@media screen and (max-width:1060px){
+
+@media screen and (max-width:1060px) {
     .side_column {
         display: none;
     }
-    .description{
-        width:110px;
+
+    .description {
+        width: 110px;
     }
 }
 
@@ -34,25 +39,25 @@
     .main_column {
         margin-right: 0;
     }
-    .picture_box{
-        width:190px;
-        height:190px;
+
+    .picture_box {
+        width: 190px;
+        height: 190px;
     }
-    .text{
-        font-size:0.7em
+
+    .text {
+        font-size: 0.7em
     }
 }
 
 @media screen and (max-width:700px) {
 
-    .navbar_search_box{
-        display:none;
+    .navbar_search_box {
+        display: none;
     }
-    .picture_box{
-        width:150px;
-        height:150px;
+
+    .picture_box {
+        width: 150px;
+        height: 150px;
     }
 }
-
-
-

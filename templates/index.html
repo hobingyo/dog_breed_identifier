@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>호빈교</title>
-    <link rel="icon" href="../static/img/symbol.png" type="image/ico">
+    <meta name="theme-color" content="#ff8e00"">
+    <title>강아지 품종 분석기 </title>
+    <link rel=" icon" href="../static/img/symbol.png" type="image/ico">
     <!-- favicon -->
-    <link rel="shortcut icon" href="../static/img/favicon.png"/>
+    <link rel="shortcut icon" href="../static/img/favicon.png" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link
-            href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=East+Sea+Dokdo&family=Gugi&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300;500;600;900&family=Stylish&family=Yeon+Sung&display=swap"
-            rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=East+Sea+Dokdo&family=Gugi&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300;500;600;900&family=Stylish&family=Yeon+Sung&display=swap"
+        rel="stylesheet">
 
     <!-- Optional JavaScript -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
     <script src="https://use.fortawesome.com/99966411.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -39,174 +41,180 @@
 </head>
 
 <body>
-<main class="">
-    <div style="width: 100%; text-align: center; margin-top: 50px">
-        <div><img style="width: 1000px" src="../static/img/maindog.png"></div>
-        <div style="margin-top:70px" class="box">
-            <span> 당신의 개는 무슨 종일까요?🤔 <br>'강아지 종 판독기'에서 구분해드리겠습니다!</span>
-        </div>
-        <div style="margin-top:50px;">
-            <button type="button" class="btn btn-primary btn-lg" id="add_box" style="width: 100px; height: 50px;">업로드 🐍
-            </button>
-        </div>
-    </div>
-    <div class="main_page_all" style="margin-top:50px">
-        <div id="photos" class="main_column">
-
-        </div>
-    </div>
-</main>
-<div id="first_modal" style="position:fixed" class="modal_overlay">
-    <div class="modal_window">
-        <div class="addition_modal_head">
-            <div style="width:40px"></div>
-            <p class="modal-title">
-                <button style="width: 200px; height: 35px; border-radius: 10px " onclick="uploading_files()"> 너의 종은 무엇이냐
-                    🐶
+    <main class="">
+        <div style="width: 100%; text-align: center; margin-top: 50px">
+            <div><img style="width: 1000px" src="../static/img/maindog.png"></div>
+            <div style="margin-top:70px" class="box">
+                <span> 당신의 개는 무슨 종일까요?🤔 <br>'강아지 종 판독기'에서 구분해드리겠습니다!</span>
+            </div>
+            <div style="margin-top:30px;">
+                <button type="button" class="btn btn-primary btn-lg" id="add_box"
+                    style="width: 150px; height: 50px; text-align: center; font-size: 15px">🐶 업로드 🐶
                 </button>
-                <input type="text" id="input-username" placeholder="너의 이름은..?">
-            </p>
-            <button id="modal_x_box" class="modal_x_box"><i class="fa fa-x"></i></button>
+            </div>
         </div>
-        <div id="image_upload" class="addition_modal_body">
-            <a id="text">사진을 여기에 끌어다 놓으세요</a>
+        <div class="main_page_all" style="margin-top:50px">
+            <div id="photos" class="main_column">
+            </div>
+        </div>
+    </main>
+    <div id="first_modal" style="position:fixed" class="modal_overlay">
+        <div class="modal_window">
+            <div class="addition_modal_head">
+                <div style="width:40px"></div>
+                <p class="modal-title">
+                    <button style="width: 200px; height: 35px; border-radius: 10px; background-color: #110769"
+                        onclick="uploading_files()">🐶 너의 종은 무엇이냐 🐶
+                    </button>
+                    <input type="text" id="input-username" style="background-color: #343434" placeholder="너의 이름은..?">
+                </p>
+                <button id="modal_x_box" class="modal_x_box"><i class="fa fa-x"></i></button>
+            </div>
+            <div id="image_upload" class="addition_modal_body">
+                <a id="text">사진을 여기에 끌어다 놓으세요</a>
+            </div>
         </div>
     </div>
-</div>
-<script>
-    let files;
+    <script>
+        let files;
 
-    $('#add_box').click(function () { //+버튼 클릭시 1번모달창 나타나기
-        $('#first_modal').css({
-            display: 'flex'
+        $('#add_box').click(function () { //+버튼 클릭시 1번모달창 나타나기
+            $('#first_modal').css({
+                display: 'flex'
+            });
+            $(document.body).css({   //+버튼 클릭시 전체화면 스크롤바 사라짐
+                overflow: 'hidden'
+            })
         });
-        $(document.body).css({   //+버튼 클릭시 전체화면 스크롤바 사라짐
-            overflow: 'hidden'
-        })
-    });
 
-    $('#modal_x_box').click(function () {   //x버튼 클릭시 1번모달창 사라짐
-        $('.modal_overlay').css({
-            display: 'none'
+        $('#modal_x_box').click(function () {   //x버튼 클릭시 1번모달창 사라짐
+            $('.modal_overlay').css({
+                display: 'none'
+            });
+            $(document.body).css({
+                overflow: 'visible'
+            })
         });
-        $(document.body).css({
-            overflow: 'visible'
-        })
-    });
 
-    $('.addition_modal_body')
-        .on("dragover", dragOver)
-        .on("dragleave", dragOver)
-        .on("drop", uploadFiles);
+        $('.addition_modal_body')
+            .on("dragover", dragOver)
+            .on("dragleave", dragOver)
+            .on("drop", uploadFiles);
 
-    function dragOver(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        if (e.type == "dragover") {
-            $(e.target).css({
-                "background-color": "black",
-                "outline-offset": "-20px"
-            });
-        } else {
-            $(e.target).css({
-                "background-color": "gray",
-                "outline-offset": "-10px"
-            });
-        }
-    }
-
-    function uploadFiles(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        dragOver(e);
-
-        e.dataTransfer = e.originalEvent.dataTransfer;
-        files = e.dataTransfer.files;
-
-        if (files.length > 1) {
-            alert('하나만 올려라.');
-            return;
-        }
-        if (files[0].type.match(/image.*/)) {
-            $(e.target).css({
-                "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-                "outline": "none",
-                "background-size": "100% 100%"
-            });
-            $('#text').hide();
-        } else {
-            alert('이미지가 아닙니다.');
-            return;
-        }
-    }
-
-    //파일 업로드 여기서부터 시작
-    function uploading_files() {
-        let file = files[0]; //실제 파일
-        let image = files[0].name; //파일명
-        let username = $("#input-username").val()
-        console.log(username)
-
-        let formData = new FormData();
-        formData.append('file_give', file)
-        formData.append('image_give', image)
-        formData.append('username_give', username)
-        console.log(formData)
-
-        $.ajax({
-            type: 'POST',
-            url: '/content',
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function (response) {
-                if (response['result'] == 'success') {
-                    alert(response['msg'])
-                    window.location.href = '/'
-                } else {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            },
-            error: function (err) {
-                console.log('error:' + err)
+        function dragOver(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            if (e.type == "dragover") {
+                $(e.target).css({
+                    "background-color": "black",
+                    "outline-offset": "-20px"
+                });
+            } else {
+                $(e.target).css({
+                    "background-color": "gray",
+                    "outline-offset": "-10px"
+                });
             }
-        });
-    }
+        }
+        function alert_msg() {
+            alert('삭제기능 곧 준비할게요');
+        }
 
-    $(document).ready(function () {
-        listing()
-    })
+        function uploadFiles(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            dragOver(e);
 
-    function listing() {
-        $.ajax({
-            type: "GET",
-            url: "/content",
-            data: {},
-            success: function (response) {
-                let contents = response['photos']
-                for (let i = 0; i < contents.length; i++) {
-                    let file = contents[i]['f_name']
-                    let username = contents[i]['username']
-                    let dog_name = contents[i]['dog_name']
+            e.dataTransfer = e.originalEvent.dataTransfer;
+            files = e.dataTransfer.files;
 
-                    let temp_html = `<div id="card_box" class="card_box">
+            if (files.length > 1) {
+                alert('하나만 올려라.');
+                return;
+            }
+            if (files[0].type.match(/image.*/)) {
+                $(e.target).css({
+                    "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+                    "outline": "none",
+                    "background-size": "100% 100%"
+                });
+                $('#text').hide();
+            } else {
+                alert('이미지가 아닙니다.');
+                return;
+            }
+        }
+
+        //파일 업로드 여기서부터 시작
+        function uploading_files() {
+            let file = files[0]; //실제 파일
+            let image = files[0].name; //파일명
+            let username = $("#input-username").val()
+            console.log(username)
+
+            let formData = new FormData();
+            formData.append('file_give', file)
+            formData.append('image_give', image)
+            formData.append('username_give', username)
+            console.log(formData)
+
+            $.ajax({
+                type: 'POST',
+                url: '/content',
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        alert(response['msg'])
+                        window.location.href = '/'
+                    } else {
+                        alert(response['msg'])
+                        window.location.reload()
+                    }
+                },
+                error: function (err) {
+                    console.log('error:' + err)
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            listing()
+        })
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/content",
+                data: {},
+                success: function (response) {
+                    let contents = response['photos']
+                    for (let i = 0; i < contents.length; i++) {
+                        let file = contents[i]['f_name']
+                        let username = contents[i]['username']
+                        let dog_name = contents[i]['dog_name']
+
+                        let temp_html = `<div id="card_box" class="card_box">
                 <div class="card_body">
                     <div class="card-text">
-                        <span id="shown_desc" style="text-align: center" class="card_comment">${username}</span><br>
-                        <span id="shown_desc" style="text-align: center" class="card_comment">${dog_name}</span>
+                        <span id="shown_desc" class="card_comment">${username}</span><br>
+                        <span id="shown_desc" class="card_comment"><h3>${dog_name}</h3></span>
+
                     </div>
                 </div>
                 <img class="d-block w-100" src="../static/img/post_contents/${file}">
+                <button onclick="alert_msg()">삭제</button>
             </div>`
-                    $('#photos').append(temp_html)
+                        $('#photos').prepend(temp_html)
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
 
-</script>
+    </script>
 
 
 </body>
+
 </html>
