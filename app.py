@@ -7,9 +7,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-client = MongoClient(
-    'mongodb+srv://*******@cluster0.*****.mongodb.net/cluster0?retryWrites=true&w=majority')
-db = client.---
+client = MongoClient('mongodb+srv://******@cluster0.*******.mongodb.net/cluster0?retryWrites=true&w=majority')
+db = client.*****
 
 
 # 메인 페이지

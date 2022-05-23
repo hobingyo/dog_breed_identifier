@@ -8,12 +8,25 @@ a {
     color: #c7b0ff;
 }
 
+
 body {
-    background-color: #000000;
+    background: rgb(29, 0, 255);
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/repeated-square-dark.png");
+
+
+}
+
+h3 {
+    background: linear-gradient(to right top, #ff0000, #ffcd00);
+    color: transparent;
+    -webkit-background-clip: text;
 }
 
 button {
     cursor: pointer;
+    margin: 10px auto 10px auto;
+    display: flex;
+    border-radius: 5px;
 }
 
 /*=================== navbar ====================*/
@@ -23,7 +36,9 @@ button {
     height: 100%;
     display: none;
 }
-
+.main_column {
+    max-width: 500px;
+}
 
 
 .box {
@@ -32,24 +47,23 @@ button {
     font-size: 30px;
     margin: auto;
     text-align: center;
-    border-radius: 2%;
-    border: 1px dashed #5900ff;
+    border-radius: 15px;
+    border: 3px dashed #5900ff;
     align-items: center;
     justify-content: center;
-    padding-top: 50px
+    padding-top: 50px;
+    background: #080615;
 }
 
 /*=================== main page ====================*/
 .main_page_all {
-    background-color: #2200ff;
+    background-color: rgba(84, 0, 255, 0);
     /* width: 100vw;
     height: 100vh; */
-    margin: auto;
+    margin: 10px auto 20px auto;
     max-width: 500px;
-    padding-top: 30px;
+    padding-top: 20px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
 
 }
 
@@ -65,18 +79,24 @@ button {
 /*===================여기 수정====================*/
 
 .card_box {
+    margin-top: 20px;
     margin-bottom: 70px;
-    border: 1px solid rgb(13, 0, 255);
-    background-color: #0a071a;
+    background-color: #5500ff;
+    border-radius: 15px;
+    padding-bottom: 1px;
 }
 
 .card-text {
-    padding-top: 15px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 500px;
+    text-align: center;
+    padding: 10px auto 5px auto;
 }
 
+.d-blcok w-100{
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+}
 
 .card-text h6 {
     color: #C7B0FFFF;
