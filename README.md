@@ -38,9 +38,6 @@
 
 <img alt="Slack" src ="https://img.shields.io/badge/Slack-8A576D.svg?&style=for-the-badge&logo=Slack&logoColor=black"/>
 
-### 레이아웃
-![snake_layout](./static/img/project_layout.png)
-
 ### 구현 기능
 
 **index.html**
